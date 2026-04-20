@@ -476,6 +476,14 @@ CXXFLAGS += -D_CRT_SECURE_NO_WARNINGS
    endif
 endif
 
+# webOS
+ifneq (,$(or $(findstring webos,$(CROSS_COMPILE)),$(findstring starfish,$(CROSS_COMPILE))))
+   LIBS += -lpthread -lGLESv2
+   HAVE_NEON = 1
+   HAVE_OPENGLES3 = 1
+   HAVE_THREADS = 1
+endif
+
 ifeq ($(DEBUG), 1)
    CXXFLAGS += -O0 -g
 else
