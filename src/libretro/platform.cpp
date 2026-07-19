@@ -41,6 +41,8 @@
 #define setsockopt(sockfd, level, optname, optval, optlen) -1
 #define sendto(sockfd, buf, len, flags, dest_addr, addrlen) 0
 #define recvfrom(sockfd, buf, len, flags, src_addr, addrlen) 0
+#else
+#define bind_socket(sockfd, addr, addrlen) bind(sockfd, addr, addrlen)
 #endif
 
 #ifdef HAVE_THREADS
